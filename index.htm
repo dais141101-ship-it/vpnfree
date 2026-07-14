@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANGGAR PREMIUM - VPN & SSH Terbaik</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Partikel */
+    #particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #0f051f, #0a0a0f);
+    }
+
+    /* Efek Glitch Neon */
+    .glitch {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      position: relative;
+      color: #fff;
+      text-shadow: 
+        0.05em 0 0 #00f0ff,
+        -0.025em -0.05em 0 #ff00ff,
+        0.025em 0.05em 0 #ffff00;
+      animation: glitch 2s infinite linear alternate-reverse;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .glitch::before {
+      color: #00f0ff;
+      animation: glitch-anim 1.5s infinite linear alternate-reverse;
+      clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    }
+
+    .glitch::after {
+      color: #ff00ff;
+      animation: glitch-anim2 2s infinite linear alternate-reverse;
+      clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes glitch-anim {
+      0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
+      20% { clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%); }
+    }
+
+    @keyframes glitch-anim2 {
+      0% { clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%); }
+      30% { clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%); }
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Partikel Background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div style="max-width:1400px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:10;">
+      <div>
+        <p style="color:#a5b4fc; font-size:1.3rem;">#1 VPN & SSH PREMIUM</p>
+        
+        <!-- Teks Glitch Neon -->
+        <h1 class="glitch" data-text="SANGGAR PREMIUM">SANGGAR PREMIUM</h1>
+        
+        <p style="font-size:1.35rem; color:#c4d0ff; margin:25px 0 35px;">Internet cepat, aman, stabil tanpa batas!<br>Support Gaming • Streaming • Browsing</p>
+        
+        <div style="margin:40px 0;">
+          <button style="padding:18px 40px; border-radius:50px; background:linear-gradient(90deg,#c026d3,#22d3ee); border:none; color:white; font-size:1.1rem; margin-right:15px;">GET STARTER</button>
+          <button style="padding:18px 40px; border-radius:50px; background:transparent; border:2px solid #67e8f9; color:#67e8f9; font-size:1.1rem;">LIHAT PAKET</button>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <img src="https://i.imgur.com/5zK8vL2.png" alt="Rocket" style="max-width:95%; filter: drop-shadow(0 0 60px #c026d3);">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Particle Background
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+    let width, height;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2.5 + 1;
+        this.speedX = Math.random() * 0.6 - 0.3;
+        this.speedY = Math.random() * 0.6 - 0.3;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > width) this.speedX *= -1;
+        if (this.y < 0 || this.y > height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(103, 232, 249, 0.8)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < 180; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      initParticles();
+    });
+
+    resizeCanvas();
+    initParticles();
+    animateParticles();
+  </script>
+</body>
+</html>
