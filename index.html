@@ -1,178 +1,342 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANGGAR PREMIUM - VPN & SSH Terbaik</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap');
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: white;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Background Partikel */
-    #particles {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1;
-      background: linear-gradient(135deg, #0f051f, #0a0a0f);
-    }
-
-    /* Efek Glitch Neon */
-    .glitch {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 5rem;
-      font-weight: 700;
-      position: relative;
-      color: #fff;
-      text-shadow: 
-        0.05em 0 0 #00f0ff,
-        -0.025em -0.05em 0 #ff00ff,
-        0.025em 0.05em 0 #ffff00;
-      animation: glitch 2s infinite linear alternate-reverse;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .glitch::before {
-      color: #00f0ff;
-      animation: glitch-anim 1.5s infinite linear alternate-reverse;
-      clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    }
-
-    .glitch::after {
-      color: #ff00ff;
-      animation: glitch-anim2 2s infinite linear alternate-reverse;
-      clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    }
-
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-3px, 3px); }
-      40% { transform: translate(-3px, -3px); }
-      60% { transform: translate(3px, 3px); }
-      80% { transform: translate(3px, -3px); }
-      100% { transform: translate(0); }
-    }
-
-    @keyframes glitch-anim {
-      0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
-      20% { clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%); }
-    }
-
-    @keyframes glitch-anim2 {
-      0% { clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%); }
-      30% { clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%); }
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEONSHIELD • VPN SSH VMESS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap');
+        
+        :root {
+            --neon-cyan: #00f5ff;
+            --neon-pink: #ff00ff;
+            --neon-green: #39ff14;
+        }
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .neon-text {
+            text-shadow: 
+                0 0 10px var(--neon-cyan),
+                0 0 20px var(--neon-cyan),
+                0 0 40px var(--neon-pink),
+                0 0 80px var(--neon-pink);
+        }
+        
+        .neon-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .neon-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 20px var(--neon-cyan),
+                0 0 40px var(--neon-pink);
+        }
+        
+        .scanline {
+            position: relative;
+        }
+        
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 255, 0.03) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 400px; }
+        }
+        
+        .glow-cyan {
+            box-shadow: 0 0 25px var(--neon-cyan);
+        }
+        
+        .glow-pink {
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+    </style>
 </head>
-<body>
-
-  <!-- Partikel Background -->
-  <canvas id="particles"></canvas>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div style="max-width:1400px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:10;">
-      <div>
-        <p style="color:#a5b4fc; font-size:1.3rem;">#1 VPN & SSH PREMIUM</p>
-        
-        <!-- Teks Glitch Neon -->
-        <h1 class="glitch" data-text="SANGGAR PREMIUM">SANGGAR PREMIUM</h1>
-        
-        <p style="font-size:1.35rem; color:#c4d0ff; margin:25px 0 35px;">Internet cepat, aman, stabil tanpa batas!<br>Support Gaming • Streaming • Browsing</p>
-        
-        <div style="margin:40px 0;">
-          <button style="padding:18px 40px; border-radius:50px; background:linear-gradient(90deg,#c026d3,#22d3ee); border:none; color:white; font-size:1.1rem; margin-right:15px;">GET STARTER</button>
-          <button style="padding:18px 40px; border-radius:50px; background:transparent; border:2px solid #67e8f9; color:#67e8f9; font-size:1.1rem;">LIHAT PAKET</button>
+<body class="scanline">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 border-b border-cyan-500/30 bg-black/80 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-pink-500 rounded-xl flex items-center justify-center text-2xl font-bold">⚡</div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-widest neon-text">NEONSHIELD</h1>
+                    <p class="text-xs text-cyan-400 -mt-1">VPN • SSH • VMESS</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#features" class="hover:text-cyan-400 transition">FITUR</a>
+                <a href="#pricing" class="hover:text-cyan-400 transition">HARGA</a>
+                <a href="#server" class="hover:text-cyan-400 transition">SERVER</a>
+                <a href="#testimoni" class="hover:text-cyan-400 transition">TESTIMONI</a>
+            </div>
+            
+            <a href="#daftar" class="neon-button px-8 py-3 bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold tracking-wider rounded-xl">
+                DAFTAR SEKARANG
+            </a>
         </div>
-      </div>
+    </nav>
 
-      <div style="text-align:center;">
-        <img src="https://i.imgur.com/5zK8vL2.png" alt="Rocket" style="max-width:95%; filter: drop-shadow(0 0 60px #c026d3);">
-      </div>
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(at_center,#00f5ff10_0%,transparent_70%)]"></div>
+        
+        <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
+            <div class="mb-6 inline-flex items-center gap-2 bg-black border border-pink-500 px-6 py-2 rounded-full text-sm">
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span class="text-green-400 font-bold">ONLINE • 1247 USERS</span>
+            </div>
+            
+            <h1 class="text-7xl md:text-8xl font-black tracking-tighter neon-text mb-6">
+                CEPAT.<br>
+                AMAN.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-500 to-green-400">NEON</span>
+            </h1>
+            
+            <p class="text-2xl md:text-3xl text-cyan-300 mb-8 max-w-2xl mx-auto">
+                VPN SSH &amp; VMESS Premium dengan kecepatan hingga 1Gbps
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <div class="flex items-center gap-2 bg-zinc-900 px-5 py-3 rounded-2xl border border-cyan-400">
+                    <i class="fas fa-bolt text-cyan-400"></i>
+                    <span>Low Ping</span>
+                </div>
+                <div class="flex items-center gap-2 bg-zinc-900 px-5 py-3 rounded-2xl border border-pink-400">
+                    <i class="fas fa-shield-alt text-pink-400"></i>
+                    <span>Anti BloK</span>
+                </div>
+                <div class="flex items-center gap-2 bg-zinc-900 px-5 py-3 rounded-2xl border border-green-400">
+                    <i class="fas fa-globe text-green-400"></i>
+                    <span>Global Server</span>
+                </div>
+            </div>
+            
+            <a href="#daftar" class="neon-button inline-block px-16 py-6 text-2xl font-bold bg-gradient-to-r from-cyan-500 to-pink-500 text-black rounded-3xl tracking-widest hover:scale-110 transition">
+                MULAI SEKARANG - Rp25.000/BULAN
+            </a>
+            
+            <div class="mt-16 text-sm opacity-70 flex justify-center gap-8">
+                <div>✅ No Log Policy</div>
+                <div>✅ Kill Switch</div>
+                <div>✅ 24/7 Support</div>
+            </div>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute bottom-10 left-10 text-cyan-400 text-6xl opacity-20 animate-pulse">⚡</div>
+        <div class="absolute top-32 right-20 text-pink-400 text-7xl opacity-20 rotate-12">⟡</div>
+    </section>
 
-  <script>
-    // Particle Background
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let particlesArray = [];
-    let width, height;
+    <!-- Features -->
+    <section id="features" class="py-24 bg-black/60">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold neon-text mb-4">FITUR UNGGULAN</h2>
+                <p class="text-cyan-400">Teknologi Neon untuk keamanan maksimal</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-950 border border-cyan-400/30 p-8 rounded-3xl hover:border-cyan-400 transition glow-cyan">
+                    <div class="text-6xl mb-6">🔒</div>
+                    <h3 class="text-2xl font-bold mb-3">Enkripsi Militer</h3>
+                    <p class="text-gray-400">AES-256 + ChaCha20. Tidak ada yang bisa membaca traffic kamu.</p>
+                </div>
+                
+                <div class="bg-zinc-950 border border-pink-400/30 p-8 rounded-3xl hover:border-pink-400 transition glow-pink">
+                    <div class="text-6xl mb-6">🚀</div>
+                    <h3 class="text-2xl font-bold mb-3">Super Fast SSH</h3>
+                    <p class="text-gray-400">Tunnel SSH + Dropbear + Stunnel. Kecepatan stabil hingga 1 Gbps.</p>
+                </div>
+                
+                <div class="bg-zinc-950 border border-green-400/30 p-8 rounded-3xl hover:border-green-400 transition">
+                    <div class="text-6xl mb-6">🌐</div>
+                    <h3 class="text-2xl font-bold mb-3">VMESS + VLESS</h3>
+                    <p class="text-gray-400">Support VMess, VLESS, Trojan, Shadowsocks. Cocok untuk semua aplikasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2.5 + 1;
-        this.speedX = Math.random() * 0.6 - 0.3;
-        this.speedY = Math.random() * 0.6 - 0.3;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > width) this.speedX *= -1;
-        if (this.y < 0 || this.y > height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = 'rgba(103, 232, 249, 0.8)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+    <!-- Pricing -->
+    <section id="pricing" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold neon-text mb-4">PAKET PREMIUM</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Paket 1 -->
+                <div class="bg-gradient-to-b from-zinc-900 to-black border border-cyan-400 rounded-3xl p-8 hover:scale-105 transition">
+                    <h3 class="text-3xl font-bold text-cyan-400">STARTER</h3>
+                    <div class="text-6xl font-black my-6">Rp25rb<span class="text-base font-normal">/bulan</span></div>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> 1 Akun SSH + VMESS</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> 500 MBps</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> 10+ Lokasi Server</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Support 24 Jam</li>
+                    </ul>
+                    <a href="#" class="block text-center py-4 bg-cyan-400 text-black font-bold rounded-2xl hover:bg-white">PILIH PAKET</a>
+                </div>
+                
+                <!-- Paket 2 (RECOMMENDED) -->
+                <div class="bg-gradient-to-b from-pink-900/30 to-black border-2 border-pink-400 rounded-3xl p-8 relative scale-110 z-10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-pink-500 text-black text-sm font-bold px-8 py-1 rounded-full">MOST POPULAR</div>
+                    <h3 class="text-3xl font-bold text-pink-400">PRO NEON</h3>
+                    <div class="text-6xl font-black my-6">Rp45rb<span class="text-base font-normal">/bulan</span></div>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Unlimited Akun</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> 1 Gbps Full Speed</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Semua Lokasi Premium</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Priority Support</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> No Log + Kill Switch</li>
+                    </ul>
+                    <a href="#" class="block text-center py-4 bg-pink-500 text-black font-bold rounded-2xl hover:bg-white">PILIH PAKET</a>
+                </div>
+                
+                <!-- Paket 3 -->
+                <div class="bg-gradient-to-b from-zinc-900 to-black border border-green-400 rounded-3xl p-8 hover:scale-105 transition">
+                    <h3 class="text-3xl font-bold text-green-400">BUSINESS</h3>
+                    <div class="text-6xl font-black my-6">Rp120rb<span class="text-base font-normal">/bulan</span></div>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> 5 Akun Premium</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Dedicated IP</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Semua Fitur Pro</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Support VIP</li>
+                    </ul>
+                    <a href="#" class="block text-center py-4 bg-green-400 text-black font-bold rounded-2xl hover:bg-white">PILIH PAKET</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
+    <!-- Server Locations -->
+    <section id="server" class="py-24 bg-black/60">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center neon-text mb-16">SERVER GLOBAL</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇸🇬 Singapore</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇯🇵 Japan</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇺🇸 USA</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇩🇪 Germany</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇧🇷 Brazil</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇦🇺 Australia</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇮🇩 Indonesia</div>
+                <div class="bg-zinc-900 p-6 rounded-2xl">🇳🇱 Netherlands</div>
+            </div>
+        </div>
+    </section>
 
-    function initParticles() {
-      particlesArray = [];
-      for (let i = 0; i < 180; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
+    <!-- Testimoni -->
+    <section id="testimoni" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center neon-text mb-16">APA KATA MEREKA</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-900 p-8 rounded-3xl">
+                    <p class="italic">"Paling stabil buat gaming dan streaming. Ping selalu di bawah 50ms."</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-cyan-400 rounded-full"></div>
+                        <div>
+                            <div class="font-bold">@xX_GamingLegend</div>
+                            <div class="text-cyan-400 text-sm">Member since 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900 p-8 rounded-3xl">
+                    <p class="italic">"Bisa bypass semua blokir. SSH-nya super cepat."</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-pink-400 rounded-full"></div>
+                        <div>
+                            <div class="font-bold">@DarkTunnelID</div>
+                            <div class="text-cyan-400 text-sm">Member since 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900 p-8 rounded-3xl">
+                    <p class="italic">"Harga murah tapi kualitas premium. Recommended!"</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-400 rounded-full"></div>
+                        <div>
+                            <div class="font-bold">@NetizenID</div>
+                            <div class="text-cyan-400 text-sm">Member since 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    function animateParticles() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-      }
-      requestAnimationFrame(animateParticles);
-    }
+    <!-- CTA -->
+    <section id="daftar" class="py-32 bg-gradient-to-b from-transparent via-pink-500/10 to-transparent text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-6xl font-black mb-8">SIAP MENJADI INVINCIBLE?</h2>
+            <p class="text-2xl mb-12 text-cyan-300">Bergabung sekarang dan nikmati internet tanpa batas</p>
+            <button onclick="alert('Silakan hubungi admin di Telegram: @neonshield_admin (contoh)')" 
+                    class="neon-button text-3xl px-20 py-8 bg-white text-black font-black rounded-3xl hover:scale-110 transition">
+                DAFTAR SEKARANG ⚡
+            </button>
+            <p class="mt-10 text-sm opacity-60">Pembayaran via Pulsa, Dana, OVO, ShopeePay, QRIS</p>
+        </div>
+    </section>
 
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      initParticles();
-    });
+    <!-- Footer -->
+    <footer class="bg-black py-16 border-t border-cyan-500/20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div>
+                <h3 class="text-2xl font-bold neon-text">NEONSHIELD</h3>
+                <p class="text-sm mt-4 opacity-70">Premium VPN &amp; Tunneling Service</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">LAYANAN</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>SSH Tunnel</li>
+                    <li>VMESS / VLESS</li>
+                    <li>Shadowsocks</li>
+                    <li>Trojan</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">HUBUNGI KAMI</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>Telegram: @neonshield_admin</li>
+                    <li>WhatsApp: 0812-XXXX-XXXX</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">LEGAL</h4>
+                <p class="text-xs opacity-60">No logs • Privacy First<br>© 2026 NeonShield</p>
+            </div>
+        </div>
+    </footer>
 
-    resizeCanvas();
-    initParticles();
-    animateParticles();
-  </script>
+    <script>
+        // Tailwind script already loaded via CDN
+        console.log('%cNEONSHIELD Loaded 🔥', 'color: #00f5ff; font-size: 20px; font-family: monospace');
+    </script>
 </body>
 </html>
