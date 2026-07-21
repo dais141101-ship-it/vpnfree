@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANGGAR PREMIUM | VPN & Config</title>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cyan: #00f3ff;
+            --purple: #bc13fe;
+            --bg-dark: #070714;
+            --card-bg: rgba(10, 10, 25, 0.8);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% -20%, #1a1a3a, var(--bg-dark));
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 50px 20px 20px;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+        }
+
+        h1 span {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--purple);
+            text-shadow: 0 0 10px var(--purple), 0 0 20px var(--purple);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            letter-spacing: 3px;
+            color: #ddd;
+            margin-top: 10px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .subtitle::before, .subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background: var(--purple);
+            box-shadow: 0 0 10px var(--purple);
+        }
+        
+        .subtitle::before { left: -70px; }
+        .subtitle::after { right: -70px; }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* PRICING CARDS */
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 2px solid;
+            border-radius: 15px;
+            padding: 30px 20px;
+            width: 300px;
+            text-align: left;
+            position: relative;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-cyan {
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
+        }
+
+        .card-cyan h3 { color: var(--cyan); }
+        .card-cyan .btn { border-color: var(--cyan); color: var(--cyan); }
+        .card-cyan .btn:hover { background: var(--cyan); color: #000; box-shadow: 0 0 15px var(--cyan); }
+
+        .card-green {
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2), inset 0 0 15px rgba(0, 255, 136, 0.1);
+        }
+        .card-green h3 { color: #00ff88; }
+        .card-green .btn { border-color: #00ff88; color: #00ff88; }
+        .card-green .btn:hover { background: #00ff88; color: #000; box-shadow: 0 0 15px #00ff88; }
+
+        .card-purple {
+            border-color: var(--purple);
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2), inset 0 0 15px rgba(188, 19, 254, 0.1);
+        }
+        .card-purple h3 { color: var(--purple); }
+        .card-purple .btn { border-color: var(--purple); color: var(--purple); }
+        .card-purple .btn:hover { background: var(--purple); color: #000; box-shadow: 0 0 15px var(--purple); }
+
+        .card h3 {
+            font-size: 1.8em;
+            margin: 0;
+            text-shadow: 0 0 5px currentColor;
+        }
+
+        .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #fff;
+        }
+
+        .price span {
+            font-size: 0.4em;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            padding: 8px 0;
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        .features li i {
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 12px 0;
+            border: 2px solid;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            background: transparent;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        /* SERVER ICON BACKGROUND */
+        .server-icon {
+            position: absolute;
+            right: 10px;
+            bottom: 80px;
+            font-size: 5em;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* UPLOAD & DOWNLOAD SECTION */
+        .action-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .action-title {
+            color: var(--cyan);
+            font-size: 1.5em;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--cyan);
+        }
+
+        .action-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Upload Box */
+        .upload-box {
+            width: 350px;
+            border: 2px dashed var(--cyan);
+            border-radius: 15px;
+            padding: 40px 20px;
+            background: rgba(0, 243, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .upload-box i {
+            font-size: 3em;
+            color: var(--cyan);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--cyan);
+        }
+
+        .upload-box h4 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .upload-box p {
+            margin: 5px 0 0;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* Download Buttons */
+        .download-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 350px;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: transparent;
+            border: 2px solid;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+        }
+
+        .dl-purple {
+            border-color: var(--purple);
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2), inset 0 0 10px rgba(188, 19, 254, 0.1);
+        }
+
+        .dl-purple:hover {
+            box-shadow: 0 0 20px var(--purple), inset 0 0 15px var(--purple);
+        }
+
+        .btn-download i.fa-download {
+            color: var(--purple);
+            font-size: 1.5em;
+        }
+        
+        .dl-cyan {
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 10px rgba(0, 243, 255, 0.1);
+        }
+
+        .dl-cyan:hover {
+            box-shadow: 0 0 20px var(--cyan), inset 0 0 15px var(--cyan);
+        }
+
+        .dl-cyan i.fa-download {
+            color: var(--cyan);
+            font-size: 1.5em;
+        }
+
+        .btn-download span {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .btn-download span small {
+            color: #aaa;
+            font-size: 0.8em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SANGGAR <span>PREMIUM</span></h1>
+        <div class="subtitle">TEMPAT TERBAIK UNTUK VPN & KONFIGURASI PREMIUM</div>
+    </header>
+
+    <!-- Di sini kamu bisa tambahkan tag <video> atau <iframe> YouTube nanti jika ingin memasukkan video promosi editanmu -->
+
+    <div class="container">
+        <!-- PRICING SECTION -->
+        <div class="pricing-grid">
+            
+            <!-- Vmess Card -->
+            <div class="card card-cyan">
+                <h3>Daftar Harga Vmess</h3>
+                <div class="price">Rp 15.000<span> / BULAN</span></div>
+                <ul class="features">
+                    <li><i class="fa-solid fa-check"></i> Server 1 Bulan</li>
+                    <li><i class="fa-solid fa-check"></i> Kuota Bebas</li>
+                    <li><i class="fa-solid fa-check"></i> Full Speed Premium</li>
+                    <li><i class="fa-solid fa-check"></i> VPN Sekarang</li>
+                </ul>
+                <i class="fa-solid fa-server server-icon" style="color: var(--cyan);"></i>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+
+            <!-- VLESS Card -->
+            <div class="card card-green">
+                <h3>VLESS</h3>
+                <div class="price">Rp 15.000<span> / BULAN</span></div>
+                <ul class="features">
+                    <li><i class="fa-solid fa-check"></i> Server 1 Bulan</li>
+                    <li><i class="fa-solid fa-check"></i> Kualitas Bertahan</li>
+                    <li><i class="fa-solid fa-check"></i> Ping Stabil</li>
+                    <li><i class="fa-solid fa-check"></i> VPN Sekarang</li>
+                </ul>
+                <i class="fa-solid fa-server server-icon" style="color: #00ff88;"></i>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+
+            <!-- Trojan STB Card -->
+            <div class="card card-purple">
+                <h3>TROJAN STB</h3>
+                <div class="price">Rp 15.000<span> / BULAN</span></div>
+                <ul class="features">
+                    <li><i class="fa-solid fa-check"></i> Server 1 Bulan</li>
+                    <li><i class="fa-solid fa-check"></i> Khusus OpenWRT</li>
+                    <li><i class="fa-solid fa-check"></i> Anti Bengong</li>
+                    <li><i class="fa-solid fa-check"></i> VPN Sekarang</li>
+                </ul>
+                <i class="fa-solid fa-server server-icon" style="color: var(--purple);"></i>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+
+        </div>
+
+        <!-- UPLOAD & DOWNLOAD SECTION -->
+        <div class="action-section">
+            <h2 class="action-title">UPLOAD & DOWNLOAD FILE HTTP CUSTOM</h2>
+            
+            <div class="action-grid">
+                <!-- Fake Upload Box -->
+                <div class="upload-box" onclick="alert('Ini fitur tampilan UI bro. File .hc aslinya tetap di-upload via GitHub ya!')">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h4>UPLOAD .HC FILE DISINI</h4>
+                    <p>Drag and drop file disini</p>
+                </div>
+
+                <!-- Download Buttons -->
+                <div class="download-list">
+                    <a href="SANGGAR-VPN.hc" download class="btn-download dl-purple">
+                        <span>
+                            CONFIG TERBARU
+                            <small>(SANGGAR-VPN.HC)</small>
+                        </span>
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                    
+                    <a href="FILE-LAIN.hc" download class="btn-download dl-cyan">
+                        <span>
+                            FILE CADANGAN
+                            <small>(BACKUP-CONFIG.HC)</small>
+                        </span>
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
